@@ -1,4 +1,3 @@
-
 """
 Hands-On Assignment 2: QR Code Generator
 Course: Advanced Artificial Intelligence (MSCS-633-B01)
@@ -14,10 +13,11 @@ from urllib.parse import urlparse
 import qrcode
 
 
-def is_valid_url(url):
+def is_valid_url(url: str) -> bool:
     """Check whether the entered URL is a valid HTTP(S) URL."""
     parsed_url = urlparse(url)
 
+    # Accept only web URLs with a hostname and no embedded spaces.
     return (
         parsed_url.scheme in ("http", "https")
         and bool(parsed_url.hostname)
@@ -25,9 +25,13 @@ def is_valid_url(url):
     )
 
 
-def generate_qr_code(url, filename="biox_qr_code.png"):
+def generate_qr_code(
+    url: str,
+    filename: str = "biox_qr_code.png",
+) -> Path:
     """Generate and save a QR code image for the given URL."""
 
+    # Keep generated files in a dedicated output directory.
     output_directory = Path("output")
     output_directory.mkdir(parents=True, exist_ok=True)
 
@@ -39,6 +43,8 @@ def generate_qr_code(url, filename="biox_qr_code.png"):
     )
 
     qr.add_data(url)
+
+    # Let qrcode choose the smallest QR version that fits the URL.
     qr.make(fit=True)
 
     image = qr.make_image(
@@ -52,7 +58,7 @@ def generate_qr_code(url, filename="biox_qr_code.png"):
     return output_path
 
 
-def main():
+def main() -> None:
     """Run the QR code generator application."""
 
     print("=" * 50)
