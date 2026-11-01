@@ -1,0 +1,17 @@
+
+{
+  "project_name": "AI QR Code Generator",
+  "assignment": "Hands-On Assignment 2",
+  "course": "Advanced Artificial Intelligence (MSCS-633-B01)",
+  "description": "Python application that generates QR codes from website URLs.",
+  "language": "Python",
+  "python_version": "3.9.6",
+  "main_file": "qr_generator.py",
+  "dependencies": {
+    "qrcode": "8.2",
+    "Pillow": "11.3.0"
+  },
+  "input": "HTTP or HTTPS website URL",
+  "output": "output/biox_qr_code.png",
+  "execution_command": "python qr_generator.py"
+}
